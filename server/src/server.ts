@@ -1,8 +1,10 @@
 import Koa from 'koa';
 import chalk from 'chalk';
+import 'reflect-metadata';
+import { createConnection} from "typeorm";
 
 import apolloServer from './graphql/schema'
-import { environment } from './config';
+import { environment, ormConfig } from './config';
 import middleware from './middleware/middleware';
 import router from './routes/routes';
 
@@ -20,7 +22,14 @@ app.use(router.routes());
 
 apolloServer.applyMiddleware({ app, path });
 
-app.listen(environment.port, () => {
-  console.log(`Server ready at http://localhost:${environment.port}${apolloServer.graphqlPath}`);
-});
-
+(async () => {
+  try {
+    await createConnection(ormConfig);
+    
+    app.listen(environment.port, () => {
+      console.log(`Server ready at http://localhost:${environment.port}${apolloServer.graphqlPath}`);
+    });        
+  } catch(err) {
+    console.log(err)
+  }
+})();

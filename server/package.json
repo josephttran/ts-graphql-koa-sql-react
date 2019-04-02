@@ -1,29 +1,35 @@
 {
-  "name": "ts-graphql-koa-sql",
-  "version": "1.0.0",
-  "description": "TypeScript GraphQL Node Koa PostgreSQL",
-  "main": "server.js",
-  "scripts": {
-    "dev": "nodemon --ext ts --exec ts-node src/server.ts"
-  },
-  "author": "josephttran",
-  "license": "MIT",
-  "dependencies": {
-    "apollo-server-koa": "^2.4.8",
-    "dotenv": "^7.0.0",
-    "graphql": "^14.2.0",
-    "koa": "^2.7.0",
-    "koa-helmet": "^4.1.0",
-    "koa-logger": "^3.2.0"
-  },
-  "devDependencies": {
-    "@types/koa-helmet": "^3.1.2",
-    "@types/koa-logger": "^3.1.1",
-    "@types/koa-router": "^7.0.40",
-    "chalk": "^2.4.2",
-    "koa-router": "^7.4.0",
-    "nodemon": "^1.18.10",
-    "ts-node": "^8.0.3",
-    "typescript": "^3.3.4"
-  }
+   "name": "ts-graphql-koa-sql",
+   "version": "1.0.0",
+   "description": "TypeScript GraphQL Node Koa PostgreSQL",
+   "main": "server.js",
+   "scripts": {
+      "dev": "nodemon --ext ts --exec ts-node src/server.ts"
+   },
+   "author": "josephttran",
+   "license": "MIT",
+   "dependencies": {
+      "apollo-server-koa": "^2.4.8",
+      "bcrypt": "^3.0.5",
+      "dotenv": "^7.0.0",
+      "graphql": "^14.2.0",
+      "koa": "^2.7.0",
+      "koa-helmet": "^4.1.0",
+      "koa-logger": "^3.2.0",
+      "pg": "^7.3.0",
+      "reflect-metadata": "^0.1.10",
+      "typeorm": "0.2.16"
+   },
+   "devDependencies": {
+      "@types/bcrypt": "^3.0.0",
+      "@types/koa-helmet": "^3.1.2",
+      "@types/koa-logger": "^3.1.1",
+      "@types/koa-router": "^7.0.40",
+      "@types/node": "^11.12.1",
+      "chalk": "^2.4.2",
+      "koa-router": "^7.4.0",
+      "nodemon": "^1.18.10",
+      "ts-node": "^8.0.3",
+      "typescript": "^3.4.1"
+   }
 }
