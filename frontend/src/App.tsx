@@ -3,9 +3,10 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import Home from './components/Home';
-import Login from './components/Login';
-import Register from './components/Register';
+import Login from './components/login/Login';
+import Register from './components/register/Register';
 import NotFound from './components/NotFound';
+
 class App extends Component {
   render() {
     return (

@@ -1,0 +1,65 @@
+.Register {
+  margin: auto;
+  margin-top: 2vh;
+  width: 100%;
+  border: 2px #bbb solid;
+  border-radius: 2%;
+}
+
+.Register-form {
+  padding: 10px;
+  height: 60vh;
+
+  display: flex;  
+  flex-direction: column;
+  justify-content: space-between;  
+}
+
+.Form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.Form-label {
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 16px;
+  text-align: left;
+}
+
+.Form-input {
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 18px;
+}
+
+.Register-form > .Form-group > button {
+  margin-top: 10px;
+  background-color: deepskyblue;
+  color: #fff;
+  font-size: 24px; 
+}
+
+.Register-form > .Form-group > button:hover {
+  background-color: green;
+}
+
+.Register-form > .Form-group > a {
+  margin-top: 10px;
+  background-color: deepskyblue;
+  color: #fff;
+  border: 2px solid #bbb;
+  font-size: 24px; 
+}
+
+.Register-form > .Form-group > a:hover {
+  background-color: red;
+}
+
+@media (min-width: 680px) {
+  .Register {
+    width: 500px;
+  }
+}
