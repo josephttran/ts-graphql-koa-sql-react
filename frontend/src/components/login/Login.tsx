@@ -1,12 +1,9 @@
 import React from 'react';
-import { Formik, Field, Form, FormikActions } from 'formik';
+import { Formik, Field, Form, FormikActions, ErrorMessage } from 'formik';
 
+import { LoginValues } from '../../interfaces/formInterface';
+import { validateLoginForm } from '../../utils/validation';
 import './Login.css';
-
-interface Values {
-  email: string;
-  password: string
-}
 
 const Login = () => {
   return(
@@ -20,29 +17,29 @@ const Login = () => {
             email: '',
             password: ''
           }}
-          onSubmit={(values: Values, { setSubmitting }: FormikActions<Values>) => {
+          onSubmit={(values: LoginValues, { setSubmitting }: FormikActions<LoginValues>) => {
             setTimeout(() => {
               console.log(JSON.stringify(values));
               setSubmitting(false);
             }, 500);
           }}
+          validate={(values) => {
+            return validateLoginForm(values);
+          }}
           render={() => (
             <Form className='Login-form'>
               <div className='Form-group'>
-                <div className='Form-label'>
-                  <label htmlFor='email'>Email</label>
-                </div>
-                <div>  
-                  <Field className='Form-input' id='email' name='email' placeholder='fl@example.com' type='email' />
-                </div>
+                <label htmlFor='email'>
+                  <div className='Form-label'>Email</div>
+                </label>
+                <Field className='Form-input' id='email' name='email' placeholder='fl@example.com' type='email' />
+                <ErrorMessage className='Error' name='email' component='div' />              
               </div>
               <div className='Form-group'>
-                <div className='Form-label'>
-                  <label htmlFor='password'>Password</label>
-                </div>
-                <div>  
-                  <Field className='Form-input' id='password' name='password' placeholder='password' type='password' />
-                </div>
+                <label htmlFor='password'>
+                  <div className='Form-label'>Password</div>
+                </label> 
+                <Field className='Form-input' id='password' name='password' placeholder='password' type='password' />
               </div>
               <div className='Form-group'>
                 <button type='submit' style={{ display: 'block' }}>Login</button>
