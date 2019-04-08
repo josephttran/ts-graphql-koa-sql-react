@@ -4,10 +4,12 @@ import { Formik, Field, Form, FormikActions, ErrorMessage } from 'formik';
 import { LoginValues } from '../../interfaces/formInterface';
 import { validateLoginForm } from '../../utils/validation';
 import './Login.css';
+import { HelloQuery } from '../../graphql/query';
 
 const Login = () => {
   return(
     <div className='Login'>
+      <HelloQuery />
       <div className='Login-header'>
         <h1>Login</h1>
       </div>
