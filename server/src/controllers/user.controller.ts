@@ -1,6 +1,6 @@
 import { User } from '../entity/User';
 import { IAuthUser, ICreateUserInput } from '../interfaces/interfaces';
-import { createToken  } from '../services/auth.service';
+import { createToken, verifyPassword } from '../services/auth.service';
 
 export class UserController {
   static async createUser(userInput: ICreateUserInput): Promise<User> {
@@ -32,6 +32,23 @@ export class UserController {
     const authUser: IAuthUser = {
       id: newUser.id,
       email: newUser.email,
+      token: token
+    }
+
+    return authUser;
+  }
+
+  static async loginAuthUser(user: { email: string, password: string }): Promise<IAuthUser> {
+    const userExists: User = await this.findByEmail(user.email);
+    
+    if (!userExists || !verifyPassword(user.password, userExists.password)) {
+      return;
+    }
+
+    const token: string = await createToken({ id: userExists.id, email: userExists.email });
+    const authUser: IAuthUser = {
+      id: userExists.id,
+      email: userExists.email,
       token: token
     }
 

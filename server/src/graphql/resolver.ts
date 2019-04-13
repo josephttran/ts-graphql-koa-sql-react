@@ -11,11 +11,19 @@ export const resolvers: IResolverObject = {
     }
   },
   Mutation: {
-    registerUser: async (_, args: ICreateUserInput, context, info) => {
-      //console.log('logging args: ', args);
-      //console.log('context: ', context);
-      //console.log('info: ', info);
+    loginUser: async (_, { email, password }, context, info) => {
 
+      const authUser = await UserController.loginAuthUser({ email, password });
+
+      console.log(authUser);
+      
+      if (!authUser) {
+        throw new UserInputError('Invalid user or password');
+      }
+
+      return authUser;
+    },
+    registerUser: async (_, args: ICreateUserInput, context, info) => {
       const { firstName, lastName, email, password } = args.input;
       const authUser = await UserController.createUserWithToken({ input: { firstName, lastName, email, password } });
 
