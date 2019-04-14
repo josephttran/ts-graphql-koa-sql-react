@@ -25,3 +25,43 @@ export const HelloQuery = () => (
     } 
   </Query>
 )
+
+export const UserQuery = (props: {email: string}) => (
+
+  <Query
+    query={gql`
+      {
+        user(email: "${props.email}") {
+          id
+          email
+          firstName
+          lastName
+        }
+      }
+    `}
+  >
+    {
+      ({ loading, error, data }) => {
+        if (loading) return <p>Loading...</p>;
+        if (error) return <p>Error :(</p>;
+
+        return (
+          <div>
+            <div>
+              {data.user.id}
+            </div>
+            <div>
+              {data.user.email}
+            </div>
+            <div>
+              {data.user.firstName}
+            </div>
+            <div>
+              {data.user.lastName}
+            </div>
+          </div>
+        )
+      }
+    } 
+  </Query>
+)
