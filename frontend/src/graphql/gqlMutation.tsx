@@ -13,8 +13,8 @@ export const loginUserMutation = () => {
 
 export const registerUserMutation = () => {
   return gql`
-    mutation {
-      registerUser(input: $input}) {
+    mutation RegisterUserMutation($user: CreateUserInput!){
+      registerUser(input: $user) {
         id
         email
         token
