@@ -1,7 +1,7 @@
-import { LoginValues, RegisterValues } from '../interfaces/formInterface';
+import { ILoginError, IRegisterError, ILoginValues, IRegisterValues } from '../interfaces/formInterface';
 
 export function validateFirstName(value: string) {
-  let error = '';
+  let error;
 
   if (!value) {
     error = 'First name required';
@@ -12,7 +12,7 @@ export function validateFirstName(value: string) {
 }
 
 export function validateLastName(value: string) {
-  let error = '';
+  let error;
 
   if (!value) {
     error = 'Last name required';
@@ -23,7 +23,7 @@ export function validateLastName(value: string) {
 }
 
 export function validateEmail(value: string) {
-  let error = '';
+  let error;
 
   if (!value) {
     error = 'Email required';
@@ -33,41 +33,44 @@ export function validateEmail(value: string) {
   return error;
 }
 
-export function validatePassword(value: string, minLen: number) {
-  let error = '';
+export function validateLoginPassword(value: string, minLen: number) {
+  let error;
 
   if (!value) {
     error = 'Password required';
-  } else if (minLen != 1 && value.length < minLen) {
+  } 
+  
+  return error;
+}
+
+export function validateRegisterPassword(value: string) {
+  const minLen = 8;
+  let error;
+
+  if (!value) {
+    error = 'Password required';
+  } else if (value.length < minLen) {
     error = 'password too short';
   }
   return error;
 }
 
-export function validateLoginForm(values: LoginValues) {
-  let errors = {
-    email: '',
-    password: ''
-  }
+export const validateLoginForm = (values: ILoginValues) => {
+  let errors: ILoginError = {};
 
   errors.email = validateEmail(values.email);
-  errors.password = validatePassword(values.password, 1);
+  errors.password = validateLoginPassword(values.password, 1);
 
   return errors;
 }
 
-export function validateRegisterForm(values: RegisterValues) {
-  let errors = {
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: ''
-  }
+export const validateRegisterForm = (values: IRegisterValues) => {
+  let errors: IRegisterError = {};
 
-  errors.firstname = validateFirstName(values.firstname);
-  errors.lastname = validateLastName(values.lastname);
+  errors.firstname = validateFirstName(values.firstName);
+  errors.lastname = validateLastName(values.lastName);
   errors.email = validateEmail(values.email);
-  errors.password = validatePassword(values.password, 8);
+  errors.password = validateRegisterPassword(values.password);
 
   return errors;
 }
