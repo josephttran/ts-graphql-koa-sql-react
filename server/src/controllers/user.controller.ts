@@ -6,8 +6,8 @@ export class UserController {
   static async createUser(userInput: ICreateUserInput): Promise<User> {
     const user = new User();
 
-    user.firstName = userInput.input.firstName;
-    user.lastName = userInput.input.lastName;
+    user.firstname = userInput.input.firstname;
+    user.lastname = userInput.input.lastname;
     user.email = userInput.input.email;
     user.password = userInput.input.password;
 
@@ -50,7 +50,7 @@ export class UserController {
     if (!isSamePw) {
       return;
     }
-    
+
     const token: string = await createToken({ id: userExists.id, email: userExists.email });
     const authUser: IAuthUser = {
       id: userExists.id,

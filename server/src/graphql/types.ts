@@ -8,8 +8,8 @@ export const typeDefs = gql`
 
   type User {
     id: ID
-    firstName: String
-    lastName: String
+    firstname: String
+    lastname: String
     email: String
     password: String
   }
@@ -26,8 +26,8 @@ export const typeDefs = gql`
   }
 
   input CreateUserInput {
-    firstName: String!
-    lastName: String!
+    firstname: String!
+    lastname: String!
     email: String!
     password: String!
   }

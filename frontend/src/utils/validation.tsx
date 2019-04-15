@@ -67,8 +67,8 @@ export const validateLoginForm = (values: ILoginValues) => {
 export const validateRegisterForm = (values: IRegisterValues) => {
   let errors: IRegisterError = {};
 
-  errors.firstname = validateFirstName(values.firstName);
-  errors.lastname = validateLastName(values.lastName);
+  errors.firstname = validateFirstName(values.firstname);
+  errors.lastname = validateLastName(values.lastname);
   errors.email = validateEmail(values.email);
   errors.password = validateRegisterPassword(values.password);
 

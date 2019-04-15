@@ -32,8 +32,8 @@ export const UserQuery = (props: {email: string}) => (
         user(email: "${props.email}") {
           id
           email
-          firstName
-          lastName
+          firstname
+          lastname
         }
       }
     `}

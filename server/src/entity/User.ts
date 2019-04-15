@@ -7,10 +7,10 @@ export class User extends BaseEntity {
     id: string;
 
     @Column('varchar', { length: 50})
-    firstName: string;
+    firstname: string;
 
     @Column('varchar', { length: 50})
-    lastName: string;
+    lastname: string;
 
     @Column('varchar', { length: 100, unique: true })
     email: string;
