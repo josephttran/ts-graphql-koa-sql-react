@@ -12,7 +12,6 @@ export const HelloQuery = () => (
   >
     {
       ({ loading, error, data }) => {
-        console.log(loading, error, data);
         if (loading) return <p>Loading...</p>;
         if (error) return <p>Error :(</p>;
         
@@ -27,7 +26,6 @@ export const HelloQuery = () => (
 )
 
 export const UserQuery = (props: {email: string}) => (
-
   <Query
     query={gql`
       {
