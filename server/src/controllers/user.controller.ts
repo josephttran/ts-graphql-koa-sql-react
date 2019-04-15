@@ -40,12 +40,17 @@ export class UserController {
 
   static async loginAuthUser(user: { email: string, password: string }): Promise<IAuthUser> {
     const userExists: User = await this.findByEmail(user.email);
-    const isSamePw: boolean = await verifyPassword(user.password, userExists.password);
     
-    if (!userExists || !isSamePw) {
+    if (!userExists) {
       return;
     }
 
+    const isSamePw: boolean = await verifyPassword(user.password, userExists.password);
+    
+    if (!isSamePw) {
+      return;
+    }
+    
     const token: string = await createToken({ id: userExists.id, email: userExists.email });
     const authUser: IAuthUser = {
       id: userExists.id,
