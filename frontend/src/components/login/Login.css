@@ -55,6 +55,7 @@
   border-radius: 2%;
   font-size: 18px;
   text-align: center;
+  text-decoration: none;
 }
 
 .Login-form > .Form-group > a:hover {
