@@ -2,7 +2,7 @@ class Auth {
   isAuthenticated = false;
 
   authenthicate() {
-    const token = localStorage.getItem('userToken');
+    const token = localStorage.getItem('token');
 
     if (token) {
       this.isAuthenticated = true;
@@ -10,7 +10,8 @@ class Auth {
   }
 
   logout() {
-    localStorage.remove('userToken');
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
     this.isAuthenticated = false;
   }
 }
