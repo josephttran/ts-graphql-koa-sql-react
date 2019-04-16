@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './App.css';
-import Apollo from './apollo';
+import Apollo from './Apollo';
 
 class App extends React.Component {
   isAuthenticated = false;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { ProtectedRoute } from './ProtectedRoute';
@@ -7,7 +7,7 @@ import Login from '../components/login/Login';
 import Register from '../components/register/Register';
 import NotFound from '../components/NotFound';
 
- class routes extends Component {
+ class Routes extends React.Component {
   render() {
     return (
       <BrowserRouter>
@@ -24,4 +24,4 @@ import NotFound from '../components/NotFound';
   }
 }
 
-export default routes;
+export default Routes;
