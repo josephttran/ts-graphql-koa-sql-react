@@ -17,9 +17,7 @@ export const LoginUserForm = () => {
             const token = result.data.loginUser.token;
 
             if(token) {
-              localStorage.setItem('token', token);
-              localStorage.setItem('user', result.data.loginUser)
-              Auth.authenthicate();
+              Auth.authenthicate(result.data.loginUser);
               
               return <Redirect to='/' />
             } 

@@ -8,9 +8,8 @@ interface ProtectedRouteProps extends RouteProps {
 }
 
 export const ProtectedRoute = ({ component: Component, ...rest }: ProtectedRouteProps) => {
-
   const render= (props: RouteComponentProps): React.ReactNode => {
-    if (Auth.isAuthenticated === true ) {
+    if (Auth.canAuthenticate()) {
       return <Component {...props} /> 
     } else {
       return <Redirect to={{ pathname: '/login' }} />
@@ -19,4 +18,3 @@ export const ProtectedRoute = ({ component: Component, ...rest }: ProtectedRoute
 
   return <Route {...rest} render={render} />
 }
-

@@ -1,18 +1,28 @@
-class Auth {
-  isAuthenticated = false;
+interface IAuthUser {
+  id: string;
+  email: string;
+  token: string;
+}
 
-  authenthicate() {
+class Auth {
+  authenthicate(user: IAuthUser) {
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('token', user.token);
+  }
+
+  canAuthenticate() {
     const token = localStorage.getItem('token');
 
     if (token) {
-      this.isAuthenticated = true;
+      return true;
     }
-  }
 
+    return false;
+  }
+  
   logout() {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    this.isAuthenticated = false;
   }
 }
 

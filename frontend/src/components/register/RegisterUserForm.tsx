@@ -17,9 +17,7 @@ const RegisterUserForm = () => {
           const token = result.data.registerUser.token
 
           if(token) {
-            localStorage.setItem('token', token);
-            localStorage.setItem('user', result.data.registerUser)
-            Auth.authenthicate();
+            Auth.authenthicate(result.data.registerUser);
 
             return <Redirect to='/' />
           } 
