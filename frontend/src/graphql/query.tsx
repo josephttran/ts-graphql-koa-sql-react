@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
@@ -44,20 +44,9 @@ export const UserQuery = (props: {email: string}) => (
         if (error) return <p>Error :(</p>;
 
         return (
-          <div>
-            <div>
-              {data.user.id}
-            </div>
-            <div>
-              {data.user.email}
-            </div>
-            <div>
-              {data.user.firstName}
-            </div>
-            <div>
-              {data.user.lastName}
-            </div>
-          </div>
+          <Fragment>
+              {data.user.firstname} {data.user.lastname}
+          </Fragment>
         )
       }
     } 
